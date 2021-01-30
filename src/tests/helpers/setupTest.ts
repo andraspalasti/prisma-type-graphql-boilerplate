@@ -1,4 +1,4 @@
-import { prisma, startServer } from "../startServer";
+import { prisma, startServer } from "../../startServer";
 import util from "util";
 import { exec } from "child_process";
 import { Server } from "http";
@@ -23,5 +23,5 @@ export const setupTests = () => {
 		server.close();
 		done();
 	});
-	return () => `http://localhost:${PORT}${graphqlPath}`;
+	return `http://localhost:${PORT}${graphqlPath}`;
 };

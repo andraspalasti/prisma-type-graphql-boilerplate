@@ -10,6 +10,7 @@
     "@types/node-fetch": "^2.5.8",
     "apollo-server": "^2.19.2",
     "class-validator": "^0.13.1",
+    "cors": "^2.8.5",
     "dotenv-safe": "^8.2.0",
     "graphql": "^15.4.0",
     "graphql-fields": "^2.0.3",

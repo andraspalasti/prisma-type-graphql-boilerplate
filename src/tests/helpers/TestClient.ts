@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { AddUserInput } from "../resolvers/UserResolver";
+import { AddUserInput } from "../../resolvers/UserResolver";
 
 export class TestClient {
 	url: string;

@@ -1,11 +1,11 @@
 import { test } from "@jest/globals";
 import { prisma } from "../startServer";
-import { setupTests } from "./setupTest";
-import { TestClient } from "./TestClient";
+import { setupTests } from "./helpers/setupTest";
+import { TestClient } from "./helpers/TestClient";
 
-const getUrl = setupTests();
+const url = setupTests();
 
-const client = new TestClient(getUrl());
+const client = new TestClient(url);
 
 test("new user test", async () => {
 	const response = await client.addUser({ email: "ani@skywalker.com", name: "Anakin Skywalker" });

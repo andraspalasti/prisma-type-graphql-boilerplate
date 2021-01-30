@@ -6,8 +6,9 @@ import { ApolloServer } from "apollo-server-express";
 import { buildSchema } from "type-graphql";
 import { Context } from "./types";
 import { UserResolver } from "./resolvers/UserResolver";
-import { __test__ } from "./constants";
+import { __dev__, __test__ } from "./constants";
 import { Server } from "http";
+import cors from "cors";
 
 export const prisma = new PrismaClient({
 	log: __test__ ? [] : ["query", "info", "warn", "error"],
@@ -19,14 +20,17 @@ export const prisma = new PrismaClient({
 });
 
 export const startServer = async (port?: number): Promise<Server> => {
+	await prisma.$connect();
+
 	const schema = await buildSchema({
 		resolvers: [UserResolver],
 		validate: false,
 	});
 
-	await prisma.$connect();
-	const apolloServer = new ApolloServer({ schema, context: (): Context => ({ prisma }) });
+	const apolloServer = new ApolloServer({ schema, context: (): Context => ({ prisma }), tracing: __dev__, debug: __dev__ });
 	const app = express();
+
+	app.use(cors());
 	apolloServer.applyMiddleware({ app });
 
 	const currentPort = port || process.env.PORT;
