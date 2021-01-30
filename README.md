@@ -1,0 +1,1 @@
+# prisma-type-graphql-boilerplate
