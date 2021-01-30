@@ -10,6 +10,7 @@ This is a boilerplate using:
 * jest
 
 You can run tests with `yarn test`.
+
 You start the server by running:
 
 1. `yarn watch` this starts the typescript compiler in watch mode
